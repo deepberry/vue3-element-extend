@@ -53,5 +53,6 @@
     ],
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
-    }
+    },
+    "main": "index.js"
 }
