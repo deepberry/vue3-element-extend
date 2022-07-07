@@ -13,28 +13,28 @@
 </template>
 
 <script>
-import { uploadImage } from "@/service/server.js";
 export default {
     name: "UploadImage",
     props: [
-        // 是否使用默认接口自动上传
+        /**是否使用默认接口自动上传 */
         {
             name: "autoUpload",
             type: Boolean,
             default: true,
         },
-        // 传入的当前图片地址
+        /**当前的图片地址 */
         {
             name: "url",
             type: String,
             default: "",
         },
-        // 图片展示尺寸
+        /**图片展示宽度（请指定单位）*/
         {
             name: "width",
             type: String,
             default: "148px", //不要质疑这里，根据需要可以使用百分比或vw等其它单位
         },
+        /**图片展示高度（请指定单位）*/
         {
             name: "height",
             type: String,
@@ -65,13 +65,13 @@ export default {
         upload: function () {
             let formdata = new FormData();
             formdata.append("file", this.$refs.uploadInput.files[0]);
-            uploadImage(formdata).then((res) => {
+            /* uploadImage(formdata).then((res) => {
                 this.data = res.data.data[0];
                 this.$message({
                     message: "上传成功",
                     type: "success",
                 });
-            });
+            }); */
         },
         remove: function () {
             this.data = "";
