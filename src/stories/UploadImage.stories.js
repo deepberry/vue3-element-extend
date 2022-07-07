@@ -1,8 +1,8 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-07-07 17:37:48
- * @LastEditTime: 2022-07-07 18:10:49
- * @Description:上传组件
+ * @LastEditTime: 2022-07-07 20:58:30
+ * @Description:上传单张图片（头像、logo等）
  */
 import UploadImage from "../components/UploadImage.vue";
 

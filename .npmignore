@@ -3,3 +3,9 @@
 .vscode
 node_modules
 .storydemo
+.storybook
+src/stories
+src/App.vue
+src/main.js
+public
+
