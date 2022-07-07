@@ -1,0 +1,44 @@
+/*
+ * @Author: iRuxu
+ * @Date: 2022-07-08 00:06:20
+ * @LastEditTime: 2022-07-08 00:09:01
+ * @Description:
+ */
+
+.w-upload-image {
+    .u-image {
+        .pr;
+        .size(148px);
+        img {
+            .size(100%);
+            .y(bottom);
+        }
+        .u-image-mask {
+            .none;
+            .pa;
+            .lt(0);
+            .size(100%);
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .u-image-delete {
+            .pa;
+            .lt(50%);
+            .size(24px);
+            .fz(24px);
+            padding: 40px;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            .pointer;
+            .none;
+        }
+        &:hover {
+            .u-image-mask,
+            .u-image-delete {
+                .db;
+            }
+        }
+    }
+    .u-upload-input {
+        .none;
+    }
+}

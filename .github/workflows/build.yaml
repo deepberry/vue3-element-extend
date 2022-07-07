@@ -9,6 +9,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
+            # 安装私有公共库依赖
             - name: Use Node.js
               uses: actions/setup-node@v3
               with:
@@ -22,6 +23,7 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
+            # 发布github私有包
             - name: Publish Components
               run: npm publish
               env:

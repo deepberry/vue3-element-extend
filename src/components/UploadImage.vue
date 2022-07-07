@@ -18,7 +18,7 @@ export default {
     props: [
         /**是否使用默认接口自动上传 */
         {
-            name: "autoUpload",
+            name: "auto",
             type: Boolean,
             default: true,
         },
@@ -77,45 +77,28 @@ export default {
             this.data = "";
         },
     },
+    setup(props, { emit }) {
+        // props = reactive(props);
+        return {
+            // classes: computed(() => ({
+            //     "storybook-button": true,
+            //     "storybook-button--primary": props.primary,
+            //     "storybook-button--secondary": !props.primary,
+            //     [`storybook-button--${props.size || "medium"}`]: true,
+            // })),
+            // style: computed(() => ({
+            //     backgroundColor: props.backgroundColor,
+            // })),
+            onClick() {
+                emit("click");
+            },
+        };
+    },
 };
 </script>
 
-<style lang="less">
-.w-upload-image {
-    .u-image {
-        .pr;
-        .size(148px);
-        img {
-            .size(100%);
-            .y(bottom);
-        }
-        .u-image-mask {
-            .none;
-            .pa;
-            .lt(0);
-            .size(100%);
-            background-color: rgba(0, 0, 0, 0.6);
-        }
-        .u-image-delete {
-            .pa;
-            .lt(50%);
-            .size(24px);
-            .fz(24px);
-            padding: 40px;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            .pointer;
-            .none;
-        }
-        &:hover {
-            .u-image-mask,
-            .u-image-delete {
-                .db;
-            }
-        }
-    }
-    .u-upload-input {
-        .none;
-    }
+<style lang="css">
+body {
+    color: #f00;
 }
 </style>
