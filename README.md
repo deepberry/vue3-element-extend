@@ -13,21 +13,21 @@ npm install @deepberry/vue3-element-extend
 
 ### Import
 
-#### 1.局部引入单个组件
+#### A.局部引入单个组件
 
 ```javascript
 import { UploadImage } from "@deepberry/vue3-element-extend";
 export {components : UploadImage}
 ```
 
-#### 2.全局引入单个组件
+#### B.全局引入单个组件
 
 ```javascript
 import { UploadImage } from "@deepberry/vue3-element-extend";
 app.component("UploadImage", UploadImage);
 ```
 
-#### 2.全局引入全部组件
+#### C.全局引入全部组件
 
 ```javascript
 import DeepBerryUI from "@deepberry/vue3-element-extend";
@@ -43,7 +43,8 @@ app.use(DeepBerryUI);
 ### 新增组件
 
 1. src/components/下创建
-2. index.js 添加 export
+2. src/stories 下编写 story
+3. index.js 添加 export
 
 ### 本地调试
 

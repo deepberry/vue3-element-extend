@@ -40,6 +40,7 @@ jobs:
                   FOLDER: storybook-static
                   CLEAN: true
 
+            # 部署至OSS以用于CDN
             - name: OSS
               uses: manyuanrong/setup-ossutil@v2.0
               with:
