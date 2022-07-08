@@ -34,14 +34,24 @@ import DeepBerryUI from "@deepberry/vue3-element-extend";
 app.use(DeepBerryUI);
 ```
 
-## API Reference
+### API Reference
 
-#### 1.本地最新版
+查看对应组件属性与事件等 https://admin.deepberry.cn/vue3-element-extend
+
+## Dev
+
+### 新增组件
+
+1. src/components/下创建
+2. index.js 添加 export
+
+### 本地调试
 
 ```shell
+npm install
 npm run storybook
 ```
 
-#### 2.线上文档版
+## Todo
 
-查看对应组件属性与事件等
+-   [ ] 测试模块

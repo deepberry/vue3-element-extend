@@ -1,12 +1,14 @@
 <template>
     <div class="w-upload-image">
         <div v-if="data" class="u-image" :style="{ width, height }">
-            <img :src="preview" />
+            <img class="u-image-pic" :src="preview" />
             <i class="u-image-mask"></i>
-            <i class="u-image-delete el-icon-delete" title="移除" @click="remove"></i>
+            <i class="u-image-delete" title="移除" @click="remove"
+                ><img svg-inline src="../assets/img/trash.svg" alt="移除"
+            /></i>
         </div>
-        <div v-else class="u-upload el-upload el-upload--picture-card" @click="select">
-            <i class="el-icon-plus"></i>
+        <div v-else class="u-upload" @click="select" :style="{ width, height }">
+            <i class="u-upload-icon">＋</i>
         </div>
         <input class="u-upload-input" type="file" @change="upload" ref="uploadInput" />
     </div>
@@ -15,33 +17,37 @@
 <script>
 export default {
     name: "UploadImage",
-    props: [
-        /**是否使用默认接口自动上传 */
-        {
-            name: "auto",
+
+    props: {
+        /** 是否使用默认接口自动上传
+         * */
+        auto: {
             type: Boolean,
             default: true,
         },
-        /**当前的图片地址 */
-        {
-            name: "url",
+        /** 当前的图片地址
+         * @ignore
+         * */
+        url: {
             type: String,
             default: "",
         },
-        /**图片展示宽度（请指定单位）*/
-        {
-            name: "width",
+        /** 图片展示宽度（请指定单位）
+         * */
+        width: {
             type: String,
-            default: "148px", //不要质疑这里，根据需要可以使用百分比或vw等其它单位
+            default: "", //不要质疑这里，根据需要可以使用百分比或vw等其它单位
         },
-        /**图片展示高度（请指定单位）*/
-        {
-            name: "height",
+        /** 图片展示高度（请指定单位）
+         * */
+        height: {
             type: String,
-            default: "148px",
+            default: "",
         },
-    ],
+    },
+
     emits: ["update:url"],
+
     data: function () {
         return {
             data: this.url || "",
@@ -77,28 +83,5 @@ export default {
             this.data = "";
         },
     },
-    setup(props, { emit }) {
-        // props = reactive(props);
-        return {
-            // classes: computed(() => ({
-            //     "storybook-button": true,
-            //     "storybook-button--primary": props.primary,
-            //     "storybook-button--secondary": !props.primary,
-            //     [`storybook-button--${props.size || "medium"}`]: true,
-            // })),
-            // style: computed(() => ({
-            //     backgroundColor: props.backgroundColor,
-            // })),
-            onClick() {
-                emit("click");
-            },
-        };
-    },
 };
 </script>
-
-<style lang="css">
-body {
-    color: #f00;
-}
-</style>
