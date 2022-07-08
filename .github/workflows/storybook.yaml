@@ -3,7 +3,7 @@ name: Node.js Package
 on: [push]
 
 jobs:
-    publish-gpr:
+    build-storybook:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -18,7 +18,7 @@ jobs:
                   registry-url: https://npm.pkg.github.com
                   scope: "@deepberry"
 
-            - name: Publish Components
+            - name: Install Dependencies
               run: npm install
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
