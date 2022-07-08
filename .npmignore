@@ -1,11 +1,11 @@
 .github
 .husky
+.storybook
+.storydemo
 .vscode
 node_modules
-.storydemo
-.storybook
+public
 src/stories
 src/App.vue
 src/main.js
-public
 storybook-static
