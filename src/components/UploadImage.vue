@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { getCdnLink } from "@deepberry/common/js/utils";
+import { uploadImageToOss } from "../service/cms";
 export default {
     name: "UploadImage",
 
@@ -24,6 +26,12 @@ export default {
         auto: {
             type: Boolean,
             default: true,
+        },
+        /** 指定上传到OSS的目录
+         * */
+        dir: {
+            type: String,
+            default: "upload",
         },
         /** 当前的图片地址
          * @ignore
@@ -46,11 +54,12 @@ export default {
         },
     },
 
-    emits: ["update:url"],
+    emits: ["update:url", "update:file"],
 
     data: function () {
         return {
             data: this.url || "",
+            file: null,
         };
     },
     watch: {
@@ -59,9 +68,8 @@ export default {
         },
     },
     computed: {
-        // TODO:使用cdn展示图片
         preview: function () {
-            return this.data;
+            return getCdnLink(this.data);
         },
     },
     methods: {
@@ -69,15 +77,29 @@ export default {
             this.$refs.uploadInput.dispatchEvent(new MouseEvent("click"));
         },
         upload: function () {
+            if (this.auto) {
+                this.uploadAutomatically();
+            } else {
+                this.emit("update:file", this.$refs.uploadInput.files[0]);
+            }
+        },
+        uploadAutomatically: function () {
             let formdata = new FormData();
             formdata.append("file", this.$refs.uploadInput.files[0]);
-            /* uploadImage(formdata).then((res) => {
-                this.data = res.data.data[0];
-                this.$message({
-                    message: "上传成功",
-                    type: "success",
+            uploadImageToOss(formdata, this.dir)
+                .then((res) => {
+                    this.data = res.data.data;
+                    this.$message({
+                        message: "上传成功",
+                        type: "success",
+                    });
+                })
+                .then(() => {
+                    this.sendBeacon();
                 });
-            }); */
+        },
+        sendBeacon: function () {
+            // TODO: 发送beacon统计上传图片
         },
         remove: function () {
             this.data = "";

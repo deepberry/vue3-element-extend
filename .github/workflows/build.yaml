@@ -47,4 +47,4 @@ jobs:
                   endpoint: "oss-cn-zhangjiakou.aliyuncs.com"
                   access-key-id: ${{secrets.OSS_ACCESSKEY_ID}}
                   access-key-secret: ${{secrets.OSS_ACCESS_KEY_SECRET}}
-            - run: ossutil cp -rf storybook-static oss://deepberry/vue3-element-extend
+            - run: ossutil cp -rf storybook-static oss://deepberry/www/vue3-element-extend

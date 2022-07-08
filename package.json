@@ -11,7 +11,7 @@
         "build-storybook": "build-storybook"
     },
     "dependencies": {
-        "@deepberry/common": "^0.1.0",
+        "@deepberry/common": "^0.1.5",
         "core-js": "^3.8.3",
         "element-plus": "^2.2.5",
         "vue": "^3.2.13",
@@ -29,7 +29,6 @@
         "@storybook/manager-webpack5": "^6.5.9",
         "@storybook/testing-library": "^0.0.13",
         "@storybook/vue3": "^6.5.9",
-        "storybook-source-code-addon": "^1.2.0",
         "@vue/cli-plugin-babel": "~5.0.0",
         "@vue/cli-plugin-eslint": "~5.0.0",
         "@vue/cli-service": "~5.0.0",
@@ -42,6 +41,7 @@
         "less-loader": "^11.0.0",
         "lint-staged": "^13.0.2",
         "prettier": "2.7.1",
+        "storybook-source-code-addon": "^1.2.0",
         "style-resources-loader": "^1.5.0",
         "vue-loader": "^16.8.3",
         "vue-svg-inline-loader": "^2.1.3"

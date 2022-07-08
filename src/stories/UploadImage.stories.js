@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-07-07 17:37:48
- * @LastEditTime: 2022-07-08 14:52:13
+ * @LastEditTime: 2022-07-08 19:31:47
  * @Description:上传单张图片（头像、logo等）
  */
 import UploadImage from "../components/UploadImage.vue";
@@ -49,8 +49,8 @@ Default.args = {
 
 export const Preview = Template.bind({});
 Preview.args = {
-    auto: true,
+    auto: false,
     width: "148px",
     height: "148px",
-    url: "https://console.cnyixun.com/upload/avatar/2022/3/2/8_9860765.png",
+    url: "test/iruxu/iruxu.png",
 };

@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-07-06 17:47:43
- * @LastEditTime: 2022-07-08 14:25:42
+ * @LastEditTime: 2022-07-08 18:15:27
  * @Description:storybook设置
  */
 const path = require("path");
@@ -18,13 +18,13 @@ module.exports = {
         builder: "@storybook/builder-webpack5",
     },
     webpackFinal: async (config, { configType }) => {
-        // config.resolve = {
-        //     ...config.resolve,
-        //     alias: {
-        //         ...config.resolve.alias,
-        //         "@": path.join(__dirname, "../src"),
-        //     },
-        // };
+        config.resolve = {
+            ...config.resolve,
+            alias: {
+                ...config.resolve.alias,
+                "@": path.join(__dirname, "../src"),
+            },
+        };
         config.module.rules.push({
             test: /\.less$/,
             use: [
