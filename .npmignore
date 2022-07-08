@@ -8,4 +8,4 @@ src/stories
 src/App.vue
 src/main.js
 public
-
+storybook-static

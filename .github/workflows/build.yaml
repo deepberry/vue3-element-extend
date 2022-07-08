@@ -28,3 +28,22 @@ jobs:
               run: npm publish
               env:
                   NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+            # 发布storybook
+            - name: Build
+              run: npm run build-storybook
+            - name: Deploy Build
+              uses: JamesIves/github-pages-deploy-action@releases/v3
+              with:
+                  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+                  BRANCH: storybook
+                  FOLDER: storybook-static
+                  CLEAN: true
+
+            - name: OSS
+              uses: manyuanrong/setup-ossutil@v2.0
+              with:
+                  endpoint: "oss-cn-zhangjiakou.aliyuncs.com"
+                  access-key-id: ${{secrets.OSS_ACCESSKEY_ID}}
+                  access-key-secret: ${{secrets.OSS_ACCESS_KEY_SECRET}}
+            - run: ossutil cp -rf storybook-static oss://deepberry/vue3-element-extend
