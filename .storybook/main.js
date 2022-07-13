@@ -1,7 +1,7 @@
 /*
  * @Author: iRuxu
  * @Date: 2022-07-06 17:47:43
- * @LastEditTime: 2022-07-08 18:15:27
+ * @LastEditTime: 2022-07-13 19:09:54
  * @Description:storybook设置
  */
 const path = require("path");
@@ -50,6 +50,13 @@ module.exports = {
                 },
             ],
         });
+        config.devServer = {
+            proxy: {
+                "/api/cms": {
+                    target: "https://cms.deepberry.cn",
+                },
+            },
+        };
 
         return config;
     },

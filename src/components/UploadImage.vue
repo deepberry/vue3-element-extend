@@ -10,13 +10,14 @@
         <div v-else class="u-upload" @click="select" :style="{ width, height }">
             <i class="u-upload-icon">＋</i>
         </div>
-        <input class="u-upload-input" type="file" @change="upload" ref="uploadInput" />
+        <input class="u-upload-input" type="file" @change="upload" ref="uploadInput" :accept="accept" />
     </div>
 </template>
 
 <script>
 import { getCdnLink } from "@deepberry/common/js/utils";
 import { uploadImageToOss } from "../service/cms";
+import Setting from "../../setting.json";
 export default {
     name: "UploadImage",
 
@@ -60,12 +61,10 @@ export default {
         return {
             data: this.url || "",
             file: null,
+            accept: Setting.ImageWhiteList.map((type) => {
+                return `image/${type}`;
+            }).join(","),
         };
-    },
-    watch: {
-        data: function (url) {
-            this.$emit("update:url", url);
-        },
     },
     computed: {
         preview: function () {
@@ -88,7 +87,8 @@ export default {
             formdata.append("file", this.$refs.uploadInput.files[0]);
             uploadImageToOss(formdata, this.dir)
                 .then((res) => {
-                    this.data = res.data.data;
+                    this.data = res.data.data.name;
+                    this.$emit("update:url", this.data);
                     this.$message({
                         message: "上传成功",
                         type: "success",
@@ -103,7 +103,12 @@ export default {
         },
         remove: function () {
             this.data = "";
+            this.$refs.uploadInput.value = "";
         },
     },
 };
 </script>
+
+<style lang="less">
+@import "../assets/css/components/UploadImage.less";
+</style>

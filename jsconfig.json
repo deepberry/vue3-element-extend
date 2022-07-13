@@ -4,6 +4,8 @@
         "module": "esnext",
         "baseUrl": "./",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
         "paths": {
             "@/*": ["src/*"]
         },

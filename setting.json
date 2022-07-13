@@ -1,0 +1,3 @@
+{
+    "ImageWhiteList": ["jpg", "jpeg", "png", "gif", "bmp", "webp"]
+}

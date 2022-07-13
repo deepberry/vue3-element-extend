@@ -1,3 +1,9 @@
+/*
+ * @Author: iRuxu
+ * @Date: 2022-07-06 16:30:34
+ * @LastEditTime: 2022-07-13 18:19:38
+ * @Description:
+ */
 const path = require("path");
 const pkg = require("./package.json");
 const project = require("./project.json");
@@ -21,9 +27,9 @@ module.exports = {
     //⚛️ Proxy ~
     devServer: {
         proxy: {
-            // "/api/cms": {
-            //     target: process.env["DEV_SERVER"] == "true" ? "http://localhost:5120" : "https://xxx.deepberry.cn",
-            // },
+            "/api/cms": {
+                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:5120" : "https://cms.deepberry.cn",
+            },
         },
     },
 
