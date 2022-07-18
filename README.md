@@ -37,6 +37,7 @@ app.use(DeepBerryUI);
 ### API Reference
 
 查看对应组件属性与事件等 https://admin.deepberry.cn/vue3-element-extend
+<img width="1081" alt="image" src="https://user-images.githubusercontent.com/8476969/179482812-b54f5163-09ec-469b-9119-7a6bf33f698d.png">
 
 ## Dev
 
@@ -50,6 +51,7 @@ app.use(DeepBerryUI);
 
 ```shell
 npm install
+npm run serve
 npm run storybook
 ```
 
