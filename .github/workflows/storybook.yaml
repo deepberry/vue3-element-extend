@@ -30,7 +30,7 @@ jobs:
               uses: JamesIves/github-pages-deploy-action@releases/v3
               with:
                   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-                  BRANCH: storybook
+                  BRANCH: dist
                   FOLDER: storybook-static
                   CLEAN: true
 
@@ -41,4 +41,5 @@ jobs:
                   endpoint: "oss-cn-zhangjiakou.aliyuncs.com"
                   access-key-id: ${{secrets.OSS_ACCESSKEY_ID}}
                   access-key-secret: ${{secrets.OSS_ACCESS_KEY_SECRET}}
-            - run: ossutil cp -rf storybook-static oss://deepberry/www/vue3-element-extend
+            - run: ossutil cp -rf storybook-static oss://deepberry/static/vue3-element-extend
+            # - run: ossutil cp -rf storybook-static oss://deepberry-admin/vue3-element-extend
