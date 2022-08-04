@@ -50,6 +50,14 @@ module.exports = {
                 },
             ],
         });
+        config.module.rules.push({
+            test: /\.mjs$/,
+            type: "javascript/auto",
+            resolve: {
+                fullySpecified: false,
+                extensions: [".js", ".vue", ".json"],
+            },
+        });
         config.devServer = {
             proxy: {
                 "/api/cms": {
