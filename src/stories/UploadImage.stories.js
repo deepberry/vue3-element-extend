@@ -1,11 +1,4 @@
-/*
- * @Author: iRuxu
- * @Date: 2022-07-07 17:37:48
- * @LastEditTime: 2022-07-08 19:31:47
- * @Description:上传单张图片（头像、logo等）
- */
 import UploadImage from "../components/UploadImage.vue";
-
 import "../assets/css/components/UploadImage.less";
 export default {
     title: "Example/UploadImage",

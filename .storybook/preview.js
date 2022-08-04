@@ -1,9 +1,13 @@
-/*
- * @Author: iRuxu
- * @Date: 2022-07-06 17:47:43
- * @LastEditTime: 2022-07-08 12:27:14
- * @Description:
- */
+// import elementPlus from "element-plus";
+// import { app } from "@storybook/vue3";
+// app.use(elementPlus);
+// export const decorators = [
+//     (story) => ({
+//         components: { story, elementPlus },
+//         template: "<elementPlus><story/></elementPlus>",
+//     }),
+// ];
+import "element-plus/theme-chalk/index.css";
 export const parameters = {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
