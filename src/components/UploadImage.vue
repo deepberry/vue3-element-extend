@@ -66,6 +66,11 @@ export default {
             }).join(","),
         };
     },
+    watch: {
+        url: function (val) {
+            this.data = val;
+        },
+    },
     computed: {
         preview: function () {
             return getCdnLink(this.data);
