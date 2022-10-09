@@ -6,6 +6,6 @@
  */
 import { $cms } from "@deepberry/common/js/https";
 
-export const uploadImageToOss = function (formdata, dir = "upload") {
-    return $cms().post(`/api/cms/upload/image/to/${dir}`, formdata);
+export const upload = function (formdata) {
+    return $cms().post(`/api/cms/system/upload/via/cms`, formdata);
 };

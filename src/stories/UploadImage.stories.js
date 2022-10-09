@@ -35,15 +35,13 @@ const Template = (args) => ({
 
 export const Default = Template.bind({});
 Default.args = {
-    auto: true,
     width: "148px",
     height: "148px",
 };
 
 export const Preview = Template.bind({});
 Preview.args = {
-    auto: false,
     width: "148px",
     height: "148px",
-    url: "test/iruxu/iruxu.png",
+    url: "https://cdn.deepberry.cn/test/iruxu/iruxu.png",
 };

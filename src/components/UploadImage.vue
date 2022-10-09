@@ -1,7 +1,7 @@
 <template>
     <div class="w-upload-image">
         <div v-if="data" class="u-image" :style="{ width, height }">
-            <img class="u-image-pic" :src="preview" />
+            <img class="u-image-pic" :src="data" />
             <i class="u-image-mask"></i>
             <i class="u-image-delete" title="移除" @click="remove"
                 ><img svg-inline src="../assets/img/trash.svg" alt="移除"
@@ -10,60 +10,41 @@
         <div v-else class="u-upload" @click="select" :style="{ width, height }">
             <i class="u-upload-icon">＋</i>
         </div>
-        <input class="u-upload-input" type="file" @change="upload" ref="uploadInput" :accept="accept" />
+        <input class="u-upload-input" type="file" @change="add" ref="uploadInput" :accept="accept" />
     </div>
 </template>
 
 <script>
-import { getCdnLink } from "@deepberry/common/js/utils";
-import { uploadImageToOss } from "../service/cms";
+// import { getCdnLink } from "@deepberry/common/js/utils";
 import Setting from "../../setting.json";
 export default {
     name: "UploadImage",
 
+    emits: ["update"],
+
     props: {
-        /** 是否使用默认接口自动上传
-         * */
-        auto: {
-            type: Boolean,
-            default: true,
-        },
-        /** 指定上传到OSS的目录
-         * */
-        dir: {
-            type: String,
-            default: "upload",
-        },
-        /** 当前的图片地址
-         * @ignore
-         * */
+        //当前的图片地址
         url: {
             type: String,
             default: "",
         },
-        /** 图片展示宽度（请指定单位）
-         * */
+        //图片展示宽度（请指定单位）
         width: {
             type: String,
             default: "", //不要质疑这里，根据需要可以使用百分比或vw等其它单位
         },
-        /** 图片展示高度（请指定单位）
-         * */
+        //图片展示高度（请指定单位）
         height: {
             type: String,
             default: "",
         },
     },
 
-    emits: ["update:url", "update:file"],
-
     data: function () {
         return {
             data: this.url || "",
             file: null,
-            accept: Setting.ImageWhiteList.map((type) => {
-                return `image/${type}`;
-            }).join(","),
+            accept: Setting.ImageWhiteList.join(","),
         };
     },
     watch: {
@@ -72,43 +53,23 @@ export default {
         },
     },
     computed: {
-        preview: function () {
-            return getCdnLink(this.data);
-        },
+        // preview: function () {
+        //     return getCdnLink(this.data);
+        // },
     },
     methods: {
         select: function () {
             this.$refs.uploadInput.dispatchEvent(new MouseEvent("click"));
         },
-        upload: function () {
-            if (this.auto) {
-                this.uploadAutomatically();
-            } else {
-                this.emit("update:file", this.$refs.uploadInput.files[0]);
-            }
-        },
-        uploadAutomatically: function () {
-            let formdata = new FormData();
-            formdata.append("file", this.$refs.uploadInput.files[0]);
-            uploadImageToOss(formdata, this.dir)
-                .then((res) => {
-                    this.data = res.data.data.name;
-                    this.$emit("update:url", this.data);
-                    this.$message({
-                        message: "上传成功",
-                        type: "success",
-                    });
-                })
-                .then(() => {
-                    this.sendBeacon();
-                });
-        },
-        sendBeacon: function () {
-            // TODO: 发送beacon统计上传图片
+        add: function (e) {
+            this.file = e.target.files[0];
+            this.data = window.URL.createObjectURL(this.file);
+            this.$emit("update", this.file);
         },
         remove: function () {
-            this.data = "";
             this.$refs.uploadInput.value = "";
+            this.data = "";
+            this.data.startsWith("blob:") && window.URL.revokeObjectURL(this.data);
         },
     },
 };
