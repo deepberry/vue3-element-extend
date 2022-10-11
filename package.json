@@ -1,6 +1,6 @@
 {
     "name": "@deepberry/vue3-element-extend",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "scripts": {
         "dev": "env DEV_SERVER=true vue-cli-service serve",
         "serve": "vue-cli-service serve",

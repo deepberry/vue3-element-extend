@@ -28,10 +28,11 @@ export default {
         update(file) {
             if (file) {
                 let formdata = new FormData();
-                formdata.append("file", file);
                 formdata.append("path", "test");
-                formdata.append("rename", "test");
+                formdata.append("file", file);
+                formdata.append("rename", "test1");
                 upload(formdata).then((res) => {
+                    // console.log(res.data.data)
                     // 注意token传递
                     this.url = getCdnLink(res.data.data.name); //返回cdn包装
                     this.$message({
