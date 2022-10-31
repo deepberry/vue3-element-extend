@@ -6,12 +6,13 @@
 -->
 <template>
     <div>
-        <UploadImage :url="url" @update="update" />
+        <!-- <UploadImage :url="url" @update="update" /> -->
+        <UploadFileSimple :accept="accept" @update="update" />
     </div>
 </template>
 
 <script>
-import { upload } from "@/service/cms";
+import { uploadToOss } from "@/service/cms";
 import { getCdnLink } from "@deepberry/common/js/utils";
 export default {
     name: "App",
@@ -20,21 +21,33 @@ export default {
     data: function () {
         return {
             url: "",
+            accept: "",
         };
     },
     computed: {},
     watch: {},
     methods: {
         update(file) {
+            console.log(file);
+            // if (file) {
+            //     let formdata = new FormData();
+            //     formdata.append("path", "test");
+            //     formdata.append("file", file);
+            //     formdata.append("rename", "test1");
+            //     upload(formdata).then((res) => {
+            //         // console.log(res.data.data)
+            //         // 注意token传递
+            //         this.url = getCdnLink(res.data.data.name); //返回cdn包装
+            //         this.$message({
+            //             message: "上传成功",
+            //             type: "success",
+            //         });
+            //     });
+            // }
+
             if (file) {
-                let formdata = new FormData();
-                formdata.append("path", "test");
-                formdata.append("file", file);
-                formdata.append("rename", "test1");
-                upload(formdata).then((res) => {
-                    // console.log(res.data.data)
-                    // 注意token传递
-                    this.url = getCdnLink(res.data.data.name); //返回cdn包装
+                uploadToOss(file, "test/test.md").then((data) => {
+                    this.url = getCdnLink(data.name); //返回cdn包装
                     this.$message({
                         message: "上传成功",
                         type: "success",

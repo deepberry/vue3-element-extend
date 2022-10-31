@@ -5,8 +5,10 @@
  * @Description:vue扩展组件库
  */
 import UploadImage from "./src/components/UploadImage.vue";
+import UploadFileSimple from "./src/components/UploadFileSimple.vue";
 const components = {
     UploadImage,
+    UploadFileSimple,
 };
 
 const install = function (Vue) {
