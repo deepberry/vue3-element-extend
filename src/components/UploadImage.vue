@@ -70,6 +70,7 @@ export default {
             this.$refs.uploadInput.value = "";
             this.data = "";
             this.data.startsWith("blob:") && window.URL.revokeObjectURL(this.data);
+            this.$emit("update", "");
         },
     },
 };
